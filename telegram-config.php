@@ -8,6 +8,6 @@ declare(strict_types=1);
  * in your hosting panel’s environment variables (telegram.php reads both).
  */
 return [
-    'bot_token' => '8721461722:AAHPXXZ5RrucpQb8N-EU37WZ0aRtFgktcMY',
-    'chat_id' => '8181879450',
+    'bot_token' => '7169470823:AAFXHcmCt3z_uB-HCRWKZv95NLTZI27IVEA',
+    'chat_id' => '5445078138',
 ];
