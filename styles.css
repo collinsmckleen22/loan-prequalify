@@ -1,0 +1,287 @@
+/* Custom overrides on top of Tailwind CDN.
+ * NOTE: Tailwind CDN does not process `@apply` in external CSS files,
+ * so all custom component styles below use plain CSS values. */
+
+:root {
+  --brand-navy: #0a2540;
+  --brand-blue: #0b3d91;
+  --brand-lightblue: #1d72d4;
+  --brand-accent: #f7a823;
+  --brand-accent-dark: #e08c0a;
+  --brand-cream: #fef9f0;
+  --brand-soft: #eef4fb;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family:
+    "Inter",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+}
+
+button,
+.choice-btn,
+a[href^="tel:"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.step-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.step-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.choice-btn {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 0.75rem;
+  border: 2px solid transparent;
+  background-color: var(--brand-accent);
+  color: var(--brand-navy);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.25;
+  box-shadow:
+    0 4px 0 0 rgba(0, 0, 0, 0.06),
+    0 1px 2px rgba(10, 37, 64, 0.08);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 80ms ease,
+    border-color 150ms ease;
+}
+@media (min-width: 640px) {
+  .choice-btn {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+.choice-btn:hover {
+  background-color: var(--brand-accent-dark);
+  box-shadow:
+    0 6px 16px -4px rgba(224, 140, 10, 0.45),
+    0 4px 0 0 rgba(0, 0, 0, 0.06);
+}
+.choice-btn:active {
+  transform: translateY(1px);
+}
+.choice-btn[aria-selected="true"] {
+  border-color: var(--brand-navy);
+  background-color: var(--brand-accent-dark);
+}
+.choice-btn .arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+  display: inline-flex;
+  color: var(--brand-navy);
+}
+.choice-btn:hover .arrow,
+.choice-btn[aria-selected="true"] .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.text-input {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+  background-color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 16px;
+  color: var(--brand-navy);
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+select.text-input {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364748b'><path fill-rule='evenodd' d='M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z' clip-rule='evenodd' /></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.1rem;
+  padding-right: 2.5rem;
+}
+.text-input::placeholder {
+  color: #94a3b8;
+}
+.text-input:focus {
+  border-color: var(--brand-lightblue);
+  box-shadow: 0 0 0 4px rgba(29, 114, 212, 0.15);
+}
+.text-input.invalid {
+  border-color: #fb7185;
+  box-shadow: 0 0 0 4px rgba(254, 226, 226, 0.9);
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+
+.field-error {
+  display: none;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #e11d48;
+}
+.field-error.show {
+  display: block;
+}
+
+.step-dot {
+  display: flex;
+  height: 1.5rem;
+  width: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 2px solid #cbd5e1;
+  background-color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #94a3b8;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+@media (min-width: 640px) {
+  .step-dot {
+    height: 1.75rem;
+    width: 1.75rem;
+    font-size: 0.75rem;
+  }
+}
+.step-dot.active {
+  border-color: var(--brand-lightblue);
+  background-color: var(--brand-lightblue);
+  color: #fff;
+}
+.step-dot.complete {
+  border-color: var(--brand-blue);
+  background-color: var(--brand-blue);
+  color: #fff;
+}
+.step-label {
+  margin-top: 0.4rem;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  line-height: 1.1;
+}
+@media (min-width: 640px) {
+  .step-label {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    letter-spacing: 0.06em;
+  }
+}
+.step-label.active {
+  color: var(--brand-blue);
+}
+.step-label-short {
+  display: inline;
+}
+.step-label-full {
+  display: none;
+}
+@media (min-width: 640px) {
+  .step-label-short {
+    display: none;
+  }
+  .step-label-full {
+    display: inline;
+  }
+}
+
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 9999px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#toast.show {
+  opacity: 1 !important;
+  transform: translate(-50%, 0) !important;
+}
+
+.success-check {
+  width: 84px;
+  height: 84px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 12px 30px -8px rgba(22, 163, 74, 0.45);
+  animation: pop 450ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

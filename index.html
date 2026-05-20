@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Loan Prequalification</title>
+    <meta
+      name="description"
+      content="See if you prequalify for a debt relief program in 60 seconds."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                navy: "#0a2540",
+                blue: "#0b3d91",
+                lightblue: "#1d72d4",
+                accent: "#f7a823",
+                accentDark: "#e08c0a",
+                soft: "#eef4fb",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-brand-soft via-white to-white text-brand-navy">
+    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur safe-top">
+      <div class="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-2">
+          <img src="assets/logo.svg" alt="Logo" class="h-7 w-auto" />
+          <span class="text-lg font-extrabold tracking-tight text-brand-navy">QuickRelief</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-3xl px-4 pb-16 pt-6">
+      <nav aria-label="Progress" class="mb-8">
+        <ol id="stepper" class="flex items-start justify-between gap-2"></ol>
+        <div class="mt-3 h-1 w-full rounded-full bg-slate-200">
+          <div id="progressBar" class="h-1 rounded-full bg-brand-lightblue transition-all duration-500" style="width: 0%"></div>
+        </div>
+      </nav>
+
+      <section class="rounded-2xl bg-white px-4 py-7 shadow ring-1 ring-slate-100 sm:px-10 sm:py-12">
+        <form id="prequalForm" novalidate>
+          <div id="stepContainer"></div>
+          <div class="mt-8 flex items-center justify-between border-t border-slate-100 pt-5">
+            <button id="backBtn" type="button" class="rounded-md px-3 py-2 text-sm font-semibold text-slate-500 hover:text-brand-navy disabled:opacity-40">
+              Back
+            </button>
+            <p id="stepCounter" class="text-xs font-medium text-slate-400"></p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="safe-bottom border-t border-slate-200 bg-slate-50 py-6 text-center text-xs text-slate-500">
+      <p>&copy; <span id="year"></span> QuickRelief</p>
+    </footer>
+
+    <div
+      id="toast"
+      class="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 translate-y-4 rounded-full bg-brand-navy px-5 py-2 text-sm font-medium text-white opacity-0 shadow-lg transition-all"
+    ></div>
+
+    <script>
+      window.__QUOTE_API_ENDPOINT__ = window.__QUOTE_API_ENDPOINT__ || "telegram.php";
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
